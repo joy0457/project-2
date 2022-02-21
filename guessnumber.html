@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    .box {
+      width: 450px;
+      height: auto;
+      background-color: black;
+      color: white;
+    }
+  </style>
+
+  <body>
+    <div class="box">
+      <h1>猜數字遊戲</h1>
+      <br />
+      <h2>請輸入一組四位數字,並按下檢查</h2>
+      <br />
+      <input id="number" type="text" style="font-size: 18px" />
+      <button onclick="checknumber()">檢查</button>
+      <button onclick="deletehistory()">開啟新局</button>
+      <button onclick="lookanswer()">看答案</button><br /><br />
+      <h2>歷史紀錄:</h2>
+      <h2 id="history"></h2>
+      <h2 id="answer" style="display: none"></h2>
+    </div>
+  </body>
+
+  <script>
+    //隨機產生四位數
+    var correctresult = (Math.floor(Math.random() * 9000) + 1000).toString().split("");
+    //檢查數字
+    function checknumber() {
+      var number = [];
+      var result = [0, "A", 0, "B"];
+      var number = document.getElementById("number").value;
+      var history = document.getElementById("history");
+
+      if (number.length == 4 && !isNaN(number)) {
+        for (i = 0; i < 4; i++) {
+          if (number[i] == correctresult[i]) {
+            result[0] += 1;
+          } else {
+            result[2] += 1;
+          }
+        }
+        result = result.join("");
+        if (result[0] == 4) {
+          history.innerHTML += "答對了,再玩一局吧<br>";
+        } else {
+          history.innerHTML += "Number:" + number + "=>" + result + "<br>";
+        }
+      } else {
+        alert("非4位數");
+      }
+    }
+    //清除紀錄
+    function deletehistory() {
+      document.getElementById("history").innerHTML = "";
+      window.location.reload();
+    }
+
+    //看答案
+    var answer = document.getElementById("answer");
+    function lookanswer() {
+      answer.innerHTML = "答案:" + correctresult.join("");
+      if (answer.style.display == "block") {
+        answer.style.display = "none";
+      } else {
+        answer.style.display = "block";
+      }
+    }
+  </script>
+</html>
