@@ -28,7 +28,7 @@
     }
   </style>
 
-  <body>
+  <body onkeydown="enter();">
     <div class="box">
       <h2>猜數字遊戲</h2>
       <h2>請輸入一組四位數字,並按下檢查</h2>
@@ -43,6 +43,11 @@
   </body>
 
   <script>
+    //enter預設檢查按鈕
+    function enter(){
+      if (event.keyCode==13) //enter的鍵值為13
+      document.getElementById("check").click(); //觸動按鈕的點擊
+    }
     //隨機產生四位數
     var correctresult = (Math.floor(Math.random() * 9000) + 1000).toString().split("");
     //檢查數字
