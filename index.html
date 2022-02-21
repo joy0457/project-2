@@ -49,7 +49,15 @@
       document.getElementById("check").click(); //觸動按鈕的點擊
     }
     //隨機產生四位數
-    var correctresult = (Math.floor(Math.random() * 9000) + 1000).toString().split("");
+     var arr = ["0","1","2","3","4","5","6","7","8","9"];
+            var correctresult = new Array();
+            while (correctresult.length < 4){
+                var num = Math.floor(Math.random() * 10);
+                if (correctresult.indexOf(arr[num]) == -1) {
+                  correctresult += arr[num];
+                  correctresult=correctresult.toString();
+                }
+            }
     //檢查數字
     function checknumber() {
       var number = [];
