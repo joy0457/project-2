@@ -55,7 +55,6 @@
                 var num = Math.floor(Math.random() * 10);
                 if (correctresult.indexOf(arr[num]) == -1) {
                   correctresult += arr[num];
-                  correctresult=correctresult.toString();
                 }
             }
     //檢查數字
@@ -93,7 +92,7 @@
     //看答案
     var answer = document.getElementById("answer");
     function lookanswer() {
-      answer.innerHTML = "答案:" + correctresult.join("");
+      answer.innerHTML = "答案:" + correctresult;
       if (answer.style.display == "block") {
         answer.style.display = "none";
       } else {
