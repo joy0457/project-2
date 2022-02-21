@@ -62,7 +62,7 @@
           if (number[i] == correctresult[i]) {
             result[0] += 1;
           } 
-           if (correctresult.indexOf(number[i])!==-1){
+          if (correctresult.indexOf(number[i])!==-1 && number[i] !== correctresult[i]){
             result[2] += 1;
           }
         }
