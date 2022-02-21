@@ -61,24 +61,24 @@
     //檢查數字
     function checknumber() {
       var number = [];
-      var result = [0, "A", 0, "B"];
+      var result = [0,0];
       var number = document.getElementById("number").value;
       var history = document.getElementById("history");
-
       if (number.length == 4 && !isNaN(number)) {
         for (i = 0; i < 4; i++) {
           if (number[i] == correctresult[i]) {
             result[0] += 1;
-          } 
-          if (number.indexOf(correctresult[i])!==-1 && number[i] !== correctresult[i]){
-            result[2] += 1;
+          } else {
+            if (number.indexOf(correctresult[i]) !== -1) {
+              result[1] += 1;
+            }
           }
         }
         result = result.join("");
         if (result[0] == 4) {
           history.innerHTML += "答對了,再玩一局吧<br>";
         } else {
-          history.innerHTML += "Number:" + number + "=>" + result + "<br>";
+          history.innerHTML += "Number:" + number + "=>" + result[0] + "A" + result[1] + "B" + "<br>";
         }
       } else {
         alert("非4位數");
